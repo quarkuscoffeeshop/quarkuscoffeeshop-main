@@ -1,0 +1,27 @@
+[submodule "quarkuscoffeeshop-domain"]
+	path = quarkuscoffeeshop-domain
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-domain.git
+[submodule "quarkuscoffeeshop-testutils"]
+	path = quarkuscoffeeshop-testutils
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-testutils.git
+[submodule "quarkuscoffeeshop-web"]
+	path = quarkuscoffeeshop-web
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-web.git
+[submodule "quarkuscoffeeshop-counter"]
+	path = quarkuscoffeeshop-counter
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-counter.git
+[submodule "quarkuscoffeeshop-barista"]
+	path = quarkuscoffeeshop-barista
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-barista.git
+[submodule "quarkuscoffeeshop-kitchen"]
+	path = quarkuscoffeeshop-kitchen
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-kitchen.git
+[submodule "quarkuscoffeeshop-customermocker"]
+	path = quarkuscoffeeshop-customermocker
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-customermocker.git
+[submodule "quarkuscoffeeshop-inventory"]
+	path = quarkuscoffeeshop-inventory
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-inventory.git
+[submodule "quarkuscoffeeshop-parent"]
+	path = quarkuscoffeeshop-parent
+	url = https://github.com/quarkuscoffeeshop/quarkuscoffeeshop-parent.git

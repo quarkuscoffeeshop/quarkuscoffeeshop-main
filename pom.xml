@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.quarkuscoffeeshop</groupId>
+  <artifactId>quarkus-coffeeshop</artifactId>
+  <packaging>pom</packaging>
+  <version>3.0.0</version>
+  <name>Quarkus, Kafka, and Kubernetes</name>
+  <modules>
+    <module>quarkus-coffeeshop-parent</module>
+    <module>quarkus-coffeeshop-domain</module>
+    <module>quarkus-coffeeshop-testutils</module>
+    <module>quarkus-coffeeshop-core</module>
+    <module>quarkus-coffeeshop-barista</module>
+    <module>quarkus-coffeeshop-kitchen</module>
+    <module>quarkus-coffeeshop-web</module>
+    <module>quarkus-coffeeshop-customermocker</module>
+    <module>quarkus-coffeeshop-inventory</module>
+
+
+  </modules>
+
+</project>
+
