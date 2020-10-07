@@ -46,7 +46,7 @@ jobs:
       # ########################
       - run:
           name: Build (Standard)
-          command: ./mvnw clean install -DskipTests -Dmaven.test.skip=true dependency:resolve-plugins dependency:go-offline
+          command: ./mvnw clean package #install -DskipTests -Dmaven.test.skip=true dependency:resolve-plugins dependency:go-offline
       - run:
           name: Verify (Standard)
           command: ./mvnw verify
