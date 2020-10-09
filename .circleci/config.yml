@@ -26,14 +26,33 @@ jobs:
             git submodule init
             git submodule update --remote
 
+      # Restore any files we may have cached
+      # ########################
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      # Download maven dependencies so that we can cache them
+      # ########################
+      - run:
+          name: Download Dependencies
+          command: mvn dependency:go-offline
+      # Cache the maven dependencies
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+
       # Standard maven build and test phases - does not perform a native build (or verify)
       # ########################
       - run:
           name: Build (Standard)
-          command: ./mvn clean install -DskipTests -Dmaven.test.skip=true
+          command: ./mvnw clean install -DskipTests -Dmaven.test.skip=true dependency:resolve-plugins dependency:go-offline
       - run:
           name: Verify (Standard)
-          command: ./mvn verify
+          command: ./mvnw verify
 
       # Install GraalVM and native-image, needed for a native Quarkus build
       # ########################
@@ -48,9 +67,9 @@ jobs:
       # ########################
       - run:
           name: Build (Native)
-          command: ./mvn clean install -Pnative -DskipTests -Dmaven.test.skip=true
+          command: ./mvnw clean install -Pnative -DskipTests -Dmaven.test.skip=true
           no_output_timeout: 30m
       - run:
           name: Verify (Native)
-          command: ./mvn verify -Pnative
+          command: ./mvnw verify -Pnative
           no_output_timeout: 30m
