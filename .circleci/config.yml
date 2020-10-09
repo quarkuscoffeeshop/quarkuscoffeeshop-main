@@ -2,9 +2,6 @@
 # Native Quarkus CircleCI configuration file
 #
 version: 2.1
-dependencies:
- override: 
-  - mvn install -DskipTests     
 jobs:
   build:
     # Use "machine" instead of e.g. "docker" for better/faster results
