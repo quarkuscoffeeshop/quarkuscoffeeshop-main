@@ -2,6 +2,9 @@
 # Native Quarkus CircleCI configuration file
 #
 version: 2.1
+dependencies:
+ override: 
+  - mvn install -DskipTests     
 jobs:
   build:
     # Use "machine" instead of e.g. "docker" for better/faster results
@@ -46,7 +49,7 @@ jobs:
       # ########################
       - run:
           name: Build (Standard)
-          command: ./mvnw clean package #install -DskipTests -Dmaven.test.skip=true dependency:resolve-plugins dependency:go-offline
+          command: ./mvnw clean install -DskipTests -Dmaven.test.skip=true dependency:resolve-plugins dependency:go-offline
       - run:
           name: Verify (Standard)
           command: ./mvnw verify
@@ -64,7 +67,7 @@ jobs:
       # ########################
       - run:
           name: Build (Native)
-          command: ./mvnw clean package -Pnative -DskipTests -Dmaven.test.skip=true
+          command: ./mvnw clean install -Pnative -DskipTests -Dmaven.test.skip=true
           no_output_timeout: 30m
       - run:
           name: Verify (Native)
