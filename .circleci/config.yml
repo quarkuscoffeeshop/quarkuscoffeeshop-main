@@ -30,10 +30,10 @@ jobs:
       # ########################
       - run:
           name: Build (Standard)
-          command: ./mvnw clean install -DskipTests -Dmaven.test.skip=true dependency:resolve-plugins dependency:go-offline
+          command: ./mvn clean install -DskipTests -Dmaven.test.skip=true dependency:resolve-plugins dependency:go-offline
       - run:
           name: Verify (Standard)
-          command: ./mvnw verify
+          command: ./mvn verify
 
       # Install GraalVM and native-image, needed for a native Quarkus build
       # ########################
@@ -48,9 +48,9 @@ jobs:
       # ########################
       - run:
           name: Build (Native)
-          command: ./mvnw clean install -Pnative -DskipTests -Dmaven.test.skip=true
+          command: ./mvn clean install -Pnative -DskipTests -Dmaven.test.skip=true
           no_output_timeout: 30m
       - run:
           name: Verify (Native)
-          command: ./mvnw verify -Pnative
+          command: ./mvn verify -Pnative
           no_output_timeout: 30m
