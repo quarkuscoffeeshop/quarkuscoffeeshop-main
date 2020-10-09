@@ -30,7 +30,7 @@ jobs:
       # ########################
       - run:
           name: Build (Standard)
-          command: ./mvn clean install -DskipTests -Dmaven.test.skip=true dependency:resolve-plugins dependency:go-offline
+          command: ./mvn clean install -DskipTests -Dmaven.test.skip=true
       - run:
           name: Verify (Standard)
           command: ./mvn verify
