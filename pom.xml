@@ -4,7 +4,7 @@
   <groupId>io.quarkuscoffeeshop</groupId>
   <artifactId>quarkuscoffeeshop</artifactId>
   <packaging>pom</packaging>
-  <version>4.0.0</version>
+  <version>4.1.0</version>
   <name>Quarkus, Kafka, and Kubernetes</name>
   <modules>
     <module>quarkuscoffeeshop-parent</module>
