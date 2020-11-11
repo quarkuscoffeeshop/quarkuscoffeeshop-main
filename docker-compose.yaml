@@ -2,13 +2,31 @@ version: '3'
 
 services:
 
-#  db:
-#    image: postgres
-#    container_name: "devdb"
-#    restart: always
-#    environment:
-#      POSTGRES_USER: test-user
-#      POSTGRES_PASSWORD: redhat-19
+  receipts-db:
+    image: postgres:11
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=coffeeshopuser
+      - POSTGRES_PASSWORD=redhat-20
+      - POSTGRES_DB=coffeeshopdb
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - my-network
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    volumes:
+      - ./servers.json:/pgadmin4/servers.json
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - my-network
 
   database:
     image:  'mongo'
@@ -22,6 +40,8 @@ services:
 #      - ./mongo-volume:/data/db
     ports:
       - '27017-27019:27017-27019'
+    networks:
+      - my-network
 
   zookeeper:
     image: strimzi/kafka:0.11.4-kafka-2.1.0
@@ -33,6 +53,8 @@ services:
       - "2181:2181"
     environment:
       LOG_DIR: /tmp/logs
+    networks:
+      - my-network
 
   kafka:
     image: strimzi/kafka:0.11.4-kafka-2.1.0
@@ -49,6 +71,8 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    networks:
+      - my-network
 
 #  crunchy:
 #    image:  'crunchydata/crunchy-postgres:centos7-10.9-2.4.1'
@@ -79,3 +103,6 @@ services:
 #    ports:
 #      - '5050:5050'
 
+networks:
+  my-network:
+    name: coffeeshop-network
