@@ -1,3 +1,8 @@
+***NOTE*** This repository is deprecated
+
+# Docs
+Please see the Github Pages Site for complete documentation: [quarkuscoffeeshop.github.io](https://quarkuscoffeeshop.github.io)
+
 # Quarkus Coffeeshop
 
 This is an Supersonic, Subatomic, Event-Driven demo built with Quarkus, Kafka (AMQ Streams), and Kubernetes (OpenShift)
